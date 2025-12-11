@@ -9,6 +9,7 @@ apply plugin: 'kotlin-android'
 // --- ANDROID CONFIGURATION ---
 android {
     compileSdkVersion 34 // Good to use the latest SDK
+    namespace 'com.example.jyotish'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

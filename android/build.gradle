@@ -1,24 +1,45 @@
+group 'com.example.jyotish'
+version '1.0-SNAPSHOT'
+
+// --- PLUGINS: ESSENTIAL FOR FIXING THE BUILD ERROR ---
+apply plugin: 'com.android.library' 
+// Include this plugin to support the kotlinOptions block:
+apply plugin: 'kotlin-android' 
+
+// --- ANDROID CONFIGURATION ---
 android {
-  compileSdkVersion 33
+    compileSdkVersion 34 // Good to use the latest SDK
 
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
-  kotlinOptions {
-    jvmTarget = '1.8'
-  }
+    // Requires 'kotlin-android' plugin above
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 
-  sourceSets {
-    main.java.srcDirs += 'src/main/kotlin'
-  }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 
-  defaultConfig {
-    minSdkVersion 21
-  }
+    defaultConfig {
+        minSdkVersion 21
+    }
 
-  dependencies {
+    // You can remove this 'dependencies' block from here...
+    // dependencies {
+    //    testImplementation 'junit:junit:4.13.2'
+    // }
+    // ...and move it to the root-level dependencies block below.
+}
+
+// --- ROOT-LEVEL DEPENDENCIES ---
+dependencies {
+    // Add the Kotlin standard library dependency
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:\$kotlin_version"
+
+    // Testing dependencies
     testImplementation 'junit:junit:4.13.2'
-  }
 }
